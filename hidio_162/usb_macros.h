@@ -33,7 +33,7 @@
 #define RECIPIENT_OTHERS           0b00000011
 
 #if defined(__AVR_AT90USB162__)
-#define HW_CONFIG()
+#define HW_CONFIG()// no operation
 #if F_CPU==8000000
 #define PLL_CONFIG() (PLLCSR = (1<<PLLE))
 #elif F_CPU==16000000
@@ -44,7 +44,11 @@
 
 #elif defined(__AVR_ATmega32U4__)
 #define HW_CONFIG() (UHWCON = 0x01)
+#if F_CPU==8000000
+#define PLL_CONFIG() (PLLCSR = 0x02)
+#elif F_CPU==16000000
 #define PLL_CONFIG() (PLLCSR = 0x12)
+#endif
 #define USB_CONFIG() (USBCON = ((1<<USBE)|(1<<OTGPADE)))
 #define USB_FREEZE() (USBCON = ((1<<USBE)|(1<<FRZCLK)))
 
