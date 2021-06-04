@@ -51,17 +51,17 @@ SRC := $(TARGET).c $(wildcard ./*.c)
 # type "make clean" after changing this, so all files will be rebuilt
 #
 #MCU = at90usb162       # Teensy 1.0
-#MCU = atmega32u4        # Teensy 2.0
-MCU = at90usb646       # Teensy++ 1.0
+#MCU = atmega32u4       # Teensy 2.0
+#MCU = at90usb646       # Teensy++ 1.0
 #MCU = at90usb1286      # Teensy++ 2.0
-
+MCU = at90usb1287
 
 # Processor frequency.
 #   Normally the first thing your program should do is set the clock prescaler,
 #   so your program will run at the correct speed.  You should also set this
 #   variable to same clock speed.  The _delay_ms() macro uses this, and many
 #   examples use this variable to calculate timings.  Do not add a "UL" here.
-F_CPU = 16000000
+F_CPU = 8000000
 
 
 # Output format. (can be srec, ihex, binary)
@@ -412,6 +412,7 @@ lib: $(LIBNAME)
 begin:
 	@echo
 	@echo $(MSG_BEGIN)
+	@if not exist .dep mkdir .dep
 
 end:
 	@echo $(MSG_END)

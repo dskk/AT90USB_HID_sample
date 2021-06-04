@@ -412,6 +412,7 @@ lib: $(LIBNAME)
 begin:
 	@echo
 	@echo $(MSG_BEGIN)
+	@if not exist .dep mkdir .dep
 
 end:
 	@echo $(MSG_END)
